@@ -1,11 +1,11 @@
 import App from './app';
 import logger from './middlewares/logger';
-import { ArticleRoute } from './routes/article.route';
+import {AuthRouter} from "./routes/auth.route";
 
 const app = new App({
-  port: 8000,
-  middlewares: [logger()],
-  controllers: [new ArticleRoute()],
+    port: 8000,
+    middlewares: [logger()],
+    routers: [new AuthRouter()],
 });
 
 app.listen();
