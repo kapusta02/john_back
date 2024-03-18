@@ -13,5 +13,7 @@ export class AuthRouter {
 
     private init() {
         this.router.post('/register', this.controller.registrationUser);
+        this.router.post('/login', this.controller.loginUser);
+        this.router.post('/logout', this.controller.logoutUser);
     }
 }

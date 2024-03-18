@@ -24,7 +24,37 @@ export class AuthRepository extends Repository<AuthEntity> {
         return {user: newUser, accessToken, refreshToken};
     }
 
+    public loginUser = async (email: string) => {
+        const user = new AuthEntity();
+        const accessToken = user.generateAccessToken();
+        const refreshToken = user.generateRefreshToken();
+
+        const updateToken = await this.findEmail(email);
+        if (!updateToken) console.log(`Email ${email} not found`)
+
+        await this.save({
+            ...updateToken,
+            refreshToken,
+            accessToken
+        })
+
+        return {email, accessToken, refreshToken};
+    }
+
+    public logoutUser = async (email: string) => {
+        const user = await this.findEmail(email);
+        if (!user){
+            console.log("User not found")
+            return false;
+        }
+
+        user.refreshToken = '';
+        await this.save(user);
+        return true;
+    }
+
     public findEmail = async (email: string) => {
         return await this.findOne({where: {email}});
     }
+
 }
