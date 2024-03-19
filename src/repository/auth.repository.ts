@@ -21,7 +21,7 @@ export class AuthRepository extends Repository<AuthEntity> {
         })
         await this.save(newUser);
 
-        return {user: newUser, accessToken, refreshToken};
+        return {user: email, accessToken};
     }
 
     public loginUser = async (email: string) => {

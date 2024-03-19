@@ -12,6 +12,7 @@ export interface Config {
     postgresUser: string;
     postgresPassword: string;
     postgresDatabase: string;
+    frontHost: string
 }
 
 const config: Config = {
@@ -22,7 +23,8 @@ const config: Config = {
     host: process.env.HOST || '',
     postgresUser: process.env.POSTGRES_USER || '',
     postgresPassword: process.env.POSTGRES_PASSWORD || '',
-    postgresDatabase: process.env.POSTGRES_DATABASE || ''
+    postgresDatabase: process.env.POSTGRES_DATABASE || '',
+    frontHost: process.env.FRONT_HOST || ''
 };
 console.log({config});
 

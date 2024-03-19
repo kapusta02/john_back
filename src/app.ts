@@ -1,7 +1,6 @@
-import express from 'express';
-import { Application, RequestHandler } from 'express';
-import { AppInit } from './interfaces/AppInit.interface';
-import { IRoute } from './interfaces/IRoute.interface';
+import express, {Application, RequestHandler} from 'express';
+import {AppInit} from './interfaces/AppInit.interface';
+import {IRoute} from './interfaces/IRoute.interface';
 import {appDataSource} from "./db/dataSource";
 
 class App {
